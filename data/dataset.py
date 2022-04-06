@@ -4,7 +4,6 @@ from operator import itemgetter
 import numpy as np
 import torch.utils.data as data
 import torchvision.transforms as transforms
-
 from data_processing import *
 
 class FDDataset(data.Dataset):
@@ -80,8 +79,8 @@ class FDDataset(data.Dataset):
 if __name__ == '__main__':
     root = '/home/jaren/data/'
     transform = transforms.Compose([
-        transforms.Scale((100, 100)),       #Switch to the transforms.Resize on the service
-        transforms.CenterCrop(96),
+        transforms.Scale((300, 300)),       #Switch to the transforms.Resize on the service
+        transforms.CenterCrop(224),
         transforms.ToTensor(),
         transforms.Normalize(mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5))
     ])
