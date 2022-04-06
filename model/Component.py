@@ -157,7 +157,7 @@ class Decoder(nn.Module):
     def forward(self, input):
         x = self.mlp_layer(input)
         x = x.view(-1, 320, 7, 7)
-        x = self.mlp_layer(x)
+        x = self.Fconv_layers(x)
         return x
 
 
@@ -176,10 +176,10 @@ class Encoder(nn.Module):
     """
     def __init__(self):
         super().__init__()
-        self.feature_extract = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=0)
+        self.vit_feature_extract = timm.create_model('vit_base_patch16_224', pretrained=True, num_classes=0)
 
     def forward(self, x):
-        x = self.forward_features(x)
+        x = self.vit_feature_extract(x)
         return x
 
 
