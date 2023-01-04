@@ -109,7 +109,7 @@ class Attention(nn.Module):
     attn_drop,proj_drop: nn.Dropout layers
 
     """
-    def __init__(self,dim,n_heads=12,qkv_bias=True,attn_p=0., proj_p=0.):
+    def __init__(self,dim,n_heads=6,qkv_bias=True,attn_p=0., proj_p=0.):
         super().__init__()
         self.n_heads=n_heads
         self.dim=dim
@@ -178,7 +178,7 @@ class DropPath(nn.Module):
         return drop_path(x, self.drop_prob, self.training, self.scale_by_keep)
 
 
-        
+
 class Block(nn.Module):
     """ Transformer Block
     Parameter:
